@@ -1,87 +1,313 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>$LILPEPE – MemeCoin</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+
     body {
       margin: 0;
-      font-family: 'Comic Sans MS', sans-serif;
-      background: linear-gradient(to bottom right, #fffcda, #ffe4b5);
-      color: #333;
+      font-family: 'Comic Neue', 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(to bottom right, #cde6c7, #a3d9a5);
+      color: #2a3e13;
       text-align: center;
       padding: 20px;
+      overflow-x: hidden;
+      position: relative;
     }
+
+    /* Water ripple animation behind everything */
+    body::before {
+      content: "";
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at center, #9ae199 20%, transparent 70%);
+      animation: ripple 15s linear infinite;
+      opacity: 0.3;
+      pointer-events: none;
+      z-index: 0;
+    }
+    @keyframes ripple {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 400px 400px;
+      }
+    }
+
     header {
-      background-color: #fdd835;
+      background-color: #91c24f;
       padding: 30px 20px;
-      border-bottom: 5px dashed #333;
+      border-bottom: 6px dashed #375a11;
+      position: relative;
+      z-index: 10;
     }
     h1 {
-      font-size: 3rem;
+      font-size: 4rem;
       color: #2e7d32;
+      text-shadow: 3px 3px #c4f0a5;
+      animation: bounce 2s infinite;
+      margin: 0;
+      user-select: none;
     }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    .welcome-banner {
+      font-size: 1.7rem;
+      font-weight: 700;
+      background: #5c9e22;
+      color: #f0fdf4;
+      padding: 15px 0;
+      margin-top: 10px;
+      border-radius: 12px;
+      animation: fadeInOut 6s ease forwards;
+      user-select: none;
+      box-shadow: 0 0 12px #b3e35d;
+    }
+    @keyframes fadeInOut {
+      0% { opacity: 0; transform: translateY(-40px);}
+      20%, 80% { opacity: 1; transform: translateY(0);}
+      100% { opacity: 0; transform: translateY(-40px);}
+    }
+
     .desc {
-      font-size: 1.25rem;
+      font-size: 1.3rem;
       margin: 20px auto;
       max-width: 700px;
+      user-select: none;
     }
+
     .features {
       margin-top: 30px;
+      user-select: none;
     }
     .features ul {
       list-style-type: none;
       padding: 0;
     }
     .features li {
-      font-size: 1.1rem;
-      margin: 10px 0;
+      font-size: 1.2rem;
+      margin: 12px 0;
     }
+
     .lore {
       margin-top: 40px;
       font-style: italic;
-      font-size: 1rem;
+      font-size: 1.15rem;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+      user-select: none;
     }
+
     .footer {
       margin-top: 50px;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
+      user-select: none;
     }
     a {
-      color: #1565c0;
+      color: #1b4e07;
       text-decoration: none;
       font-weight: bold;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .buy-button {
+      margin-top: 40px;
+      padding: 18px 36px;
+      font-size: 1.4rem;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: transform 0.3s ease, background-color 0.3s;
+      box-shadow: 4px 4px 15px rgba(0, 80, 0, 0.35);
+      animation: wiggle 1.8s infinite;
+      user-select: none;
+      position: relative;
+      z-index: 10;
+    }
+    .buy-button:hover {
+      background-color: #43a047;
+      transform: scale(1.15) rotate(2deg);
+      box-shadow: 6px 6px 22px rgba(0, 90, 0, 0.5);
+    }
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(3deg); }
+      75% { transform: rotate(-3deg); }
+    }
+
+    .frog-icon {
+      width: 120px;
+      animation: hop 2.5s infinite;
+      margin-top: 20px;
+      user-select: none;
+      position: relative;
+      z-index: 10;
+    }
+    @keyframes hop {
+      0% { transform: translateY(0); }
+      30% { transform: translateY(-25px) rotate(-6deg); }
+      60% { transform: translateY(10px) rotate(7deg); }
+      100% { transform: translateY(0); }
+    }
+
+    /* Speech bubble */
+    .speech-bubble {
+      position: absolute;
+      bottom: 160px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #d9f0b0;
+      border-radius: 15px;
+      padding: 12px 22px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #3b5e00;
+      width: 280px;
+      box-shadow: 3px 5px 8px rgba(0,0,0,0.1);
+      user-select: none;
+      z-index: 11;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+    .speech-bubble::after {
+      content: "";
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 12px;
+      border-style: solid;
+      border-color: #d9f0b0 transparent transparent transparent;
+    }
+    .speech-bubble.show {
+      opacity: 1;
+      pointer-events: auto;
     }
   </style>
 </head>
 <body>
+
   <header>
     <h1>$LILPEPE 🐸</h1>
-    <p class="desc">He’s small. He’s smug. He’s headed to the moon.</p>
+    <p class="desc">He’s small. He’s smug. He’s got a PhD in memeconomics and a rocket strapped to his back. 🚀</p>
   </header>
 
+  <div class="welcome-banner" id="welcomeBanner">🐸 Welcome to the swamp of $LILPEPE! Ribbit! 🐸</div>
+
   <div class="desc">
-    Meet <strong>$LILPEPE</strong>, the tiniest frog with the biggest meme energy on Solana. Born in the swamps of Web3 and raised on pure chaos, LIL PEPE is here to climb the charts, steal your bags, and vibe with the degens.
+    Meet <strong>$LILPEPE</strong>, the tiniest frog with the biggest meme energy on Solana. Born in the swamps of Web3 and raised on pure chaos, LIL PEPE is here to climb the charts, steal your bags, and vibe with the degens. He’s got a roadmap? Nah. He’s got vibes.
   </div>
+
+  <img src="https://em-content.zobj.net/source/twitter/376/frog_1f438.png" alt="dancing frog" class="frog-icon" id="frogIcon">
+
+  <div class="speech-bubble" id="speechBubble"></div>
 
   <div class="features">
     <h2>🔥 Why $LILPEPE?</h2>
     <ul>
-      <li>✅ Fair Launch on Pump.fun</li>
-      <li>✅ No Dev Tax, No Presale Nonsense</li>
-      <li>✅ Powered by Pepe Energy & Internet Tears</li>
-      <li>✅ Community-Driven, 100% Pure Meme Fuel</li>
+      <li>✅ Fair Launch on Pump.fun (no VC frogs allowed)</li>
+      <li>✅ No Dev Tax, No Presale Nonsense — Just straight vibes</li>
+      <li>✅ Powered by Pepe Energy & Internet Tears 😭</li>
+      <li>✅ Community-Driven, 100% Pure Meme Fuel 💥</li>
       <li>✅ Gonna be bigger than his uncle $PEPE 😤</li>
     </ul>
   </div>
 
   <div class="lore">
-    <p>Legend says LIL PEPE once tried to stake $DOGE and accidentally created his own chain of memes so powerful they broke Twitter. Now he's on Solana, looking for redemption—and liquidity.</p>
+    <p>Legend says LIL PEPE once tried to stake $DOGE and accidentally created his own chain of memes so powerful they broke Twitter. Now he's chillin' on Solana, waiting for Elon to tweet him into the stratosphere. 🌌🐸</p>
   </div>
+
+  <button class="buy-button" id="buyButton">🐸 Buy $LILPEPE Now (Before Your Frens Do)</button>
 
   <div class="footer">
-    <p>Follow us on <a href="https://twitter.com/tickerislilpepe" target="_blank">Twitter</a> | Launch at <a href="https://pump.fun" target="_blank">Pump.fun</a></p>
+    <p>Follow us on <a href="https://twitter.com/tickerislilpepe" target="_blank" rel="noopener noreferrer">Twitter</a> | Launch at <a href="https://pump.fun" target="_blank" rel="noopener noreferrer">Pump.fun</a></p>
   </div>
+
+  <!-- Frog sounds -->
+  <audio id="ribbitSound" src="https://actions.google.com/sounds/v1/animals/frog_ribbit.ogg" preload="auto"></audio>
+  <audio id="clickSound" src="https://actions.google.com/sounds/v1/animals/frog_croak.ogg" preload="auto"></audio>
+
+  <script>
+    // Play ribbit on page load with welcome banner fade out
+    window.addEventListener('load', () => {
+      const ribbit = document.getElementById('ribbitSound');
+      const banner = document.getElementById('welcomeBanner');
+
+      ribbit.play().catch(() => {
+        // Autoplay might be blocked, no worries
+      });
+
+      setTimeout(() => {
+        banner.style.opacity = '0';
+        setTimeout(() => banner.style.display = 'none', 2000);
+      }, 5000);
+    });
+
+    // Play frog croak on buy button click
+    const buyButton = document.getElementById('buyButton');
+    const clickSound = document.getElementById('clickSound');
+
+    buyButton.addEventListener('click', () => {
+      clickSound.currentTime = 0;
+      clickSound.play().catch(() => {});
+      // Open link after small delay to let sound play
+      setTimeout(() => {
+        window.open('https://pump.fun/', '_blank');
+      }, 300);
+    });
+
+    // Speech bubble messages cycling
+    const speechBubble = document.getElementById('speechBubble');
+    const messages = [
+      "Ribbit! Ready to hop into gains?",
+      "Frogs don’t do taxes, and neither do we!",
+      "Catch the wave, or the fly... 🍃🐸",
+      "Hopping straight to the moon! 🚀",
+      "Join the swamp party, degens only!",
+      "Uncle $PEPE is jealous already...",
+      "Staking $DOGE? LOL, we’re next level.",
+      "This frog's got meme magic, no cap!",
+      "Frogs don’t whisper... they meme loud!"
+    ];
+    let messageIndex = 0;
+
+    function showSpeech() {
+      speechBubble.textContent = messages[messageIndex];
+      speechBubble.classList.add('show');
+      setTimeout(() => {
+        speechBubble.classList.remove('show');
+        messageIndex = (messageIndex + 1) % messages.length;
+      }, 4000);
+    }
+
+    // Show speech bubble every 5 seconds, with 1s hidden gap
+    showSpeech();
+    setInterval(showSpeech, 5000);
+
+    // Optional: Frog icon wiggle on speech
+    const frogIcon = document.getElementById('frogIcon');
+    setInterval(() => {
+      frogIcon.style.transform = 'translateY(-10px) rotate(10deg)';
+      setTimeout(() => {
+        frogIcon.style.transform = '';
+      }, 800);
+    }, 5000);
+  </script>
 </body>
 </html>
-
