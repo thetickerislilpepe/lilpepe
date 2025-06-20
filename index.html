@@ -10,84 +10,111 @@
     body {
       margin: 0;
       font-family: 'Comic Neue', 'Comic Sans MS', cursive, sans-serif;
-      background: linear-gradient(to bottom right, #cde6c7, #a3d9a5);
-      color: #2a3e13;
+      background: radial-gradient(circle at center, #a3d9a5 0%, #6fa649 80%);
+      color: #1e3a06;
       text-align: center;
       padding: 20px;
       overflow-x: hidden;
       position: relative;
+      min-height: 100vh;
+      user-select: none;
     }
 
-    /* Water ripple animation behind everything */
-    body::before {
-      content: "";
+    /* Animated ripple circles in background */
+    .ripple-container {
       position: fixed;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle at center, #9ae199 20%, transparent 70%);
-      animation: ripple 15s linear infinite;
-      opacity: 0.3;
+      top: 50%;
+      left: 50%;
+      width: 400px;
+      height: 400px;
+      transform: translate(-50%, -50%);
       pointer-events: none;
       z-index: 0;
+      filter: drop-shadow(0 0 5px #4caf50);
     }
-    @keyframes ripple {
+    .ripple {
+      position: absolute;
+      border: 3px solid #7fc97f;
+      border-radius: 50%;
+      opacity: 0.5;
+      animation: rippleAnim 4s infinite;
+      pointer-events: none;
+    }
+    .ripple:nth-child(1) {
+      width: 150px; height: 150px; top: 125px; left: 125px;
+      animation-delay: 0s;
+    }
+    .ripple:nth-child(2) {
+      width: 200px; height: 200px; top: 100px; left: 100px;
+      animation-delay: 1.3s;
+    }
+    .ripple:nth-child(3) {
+      width: 250px; height: 250px; top: 75px; left: 75px;
+      animation-delay: 2.6s;
+    }
+
+    @keyframes rippleAnim {
       0% {
-        background-position: 0 0;
+        transform: scale(0.7);
+        opacity: 0.5;
       }
       100% {
-        background-position: 400px 400px;
+        transform: scale(1.4);
+        opacity: 0;
       }
     }
 
     header {
-      background-color: #91c24f;
+      background-color: #4caf50;
       padding: 30px 20px;
-      border-bottom: 6px dashed #375a11;
+      border-bottom: 8px dashed #1b4e07;
       position: relative;
       z-index: 10;
+      box-shadow: 0 0 20px #3b9a12;
+      border-radius: 0 0 40px 40px;
     }
     h1 {
-      font-size: 4rem;
-      color: #2e7d32;
-      text-shadow: 3px 3px #c4f0a5;
+      font-size: 4.5rem;
+      color: #d4f5a0;
+      text-shadow: 4px 4px 0 #154000;
       animation: bounce 2s infinite;
       margin: 0;
-      user-select: none;
     }
     @keyframes bounce {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
+      50% { transform: translateY(-20px); }
     }
 
     .welcome-banner {
-      font-size: 1.7rem;
-      font-weight: 700;
-      background: #5c9e22;
-      color: #f0fdf4;
-      padding: 15px 0;
-      margin-top: 10px;
-      border-radius: 12px;
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: #397d02;
+      color: #d9f0a1;
+      padding: 16px 0;
+      margin-top: 15px;
+      border-radius: 20px;
       animation: fadeInOut 6s ease forwards;
+      box-shadow: 0 0 18px #b1e373;
       user-select: none;
-      box-shadow: 0 0 12px #b3e35d;
+      z-index: 11;
+      position: relative;
     }
     @keyframes fadeInOut {
-      0% { opacity: 0; transform: translateY(-40px);}
+      0% { opacity: 0; transform: translateY(-50px);}
       20%, 80% { opacity: 1; transform: translateY(0);}
-      100% { opacity: 0; transform: translateY(-40px);}
+      100% { opacity: 0; transform: translateY(-50px);}
     }
 
     .desc {
-      font-size: 1.3rem;
-      margin: 20px auto;
-      max-width: 700px;
+      font-size: 1.4rem;
+      margin: 25px auto;
+      max-width: 720px;
       user-select: none;
+      text-shadow: 0 0 2px #a0d88f;
     }
 
     .features {
-      margin-top: 30px;
+      margin-top: 35px;
       user-select: none;
     }
     .features ul {
@@ -95,105 +122,124 @@
       padding: 0;
     }
     .features li {
-      font-size: 1.2rem;
-      margin: 12px 0;
+      font-size: 1.25rem;
+      margin: 14px 0;
+      text-shadow: 0 0 3px #92c96c;
     }
 
     .lore {
-      margin-top: 40px;
+      margin-top: 45px;
       font-style: italic;
-      font-size: 1.15rem;
-      max-width: 650px;
+      font-size: 1.2rem;
+      max-width: 680px;
       margin-left: auto;
       margin-right: auto;
       user-select: none;
+      text-shadow: 0 0 3px #a4dc81;
     }
 
     .footer {
-      margin-top: 50px;
-      font-size: 0.95rem;
+      margin-top: 55px;
+      font-size: 1rem;
       user-select: none;
+      text-shadow: 0 0 2px #5f8a25;
+      z-index: 10;
+      position: relative;
     }
     a {
-      color: #1b4e07;
+      color: #a8d258;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 900;
     }
     a:hover {
       text-decoration: underline;
     }
 
     .buy-button {
-      margin-top: 40px;
-      padding: 18px 36px;
-      font-size: 1.4rem;
-      background-color: #4caf50;
-      color: white;
+      margin-top: 45px;
+      padding: 20px 45px;
+      font-size: 1.6rem;
+      background: linear-gradient(45deg, #a8d258, #7dbf32, #a8d258);
+      background-size: 300% 300%;
+      color: #1f3a04;
       border: none;
-      border-radius: 20px;
+      border-radius: 40px;
       cursor: pointer;
-      transition: transform 0.3s ease, background-color 0.3s;
-      box-shadow: 4px 4px 15px rgba(0, 80, 0, 0.35);
-      animation: wiggle 1.8s infinite;
+      transition: transform 0.3s ease;
+      box-shadow:
+        0 0 10px #a8d258,
+        0 0 25px #7dbf32,
+        0 0 40px #a8d258;
+      animation: gradientShift 3s ease infinite;
       user-select: none;
       position: relative;
-      z-index: 10;
+      z-index: 12;
+      font-weight: 900;
+      filter: drop-shadow(0 0 3px #466d0d);
     }
     .buy-button:hover {
-      background-color: #43a047;
-      transform: scale(1.15) rotate(2deg);
-      box-shadow: 6px 6px 22px rgba(0, 90, 0, 0.5);
+      transform: scale(1.2) rotate(5deg);
+      box-shadow:
+        0 0 20px #d1f07a,
+        0 0 35px #9ee349,
+        0 0 60px #d1f07a;
+      background-position: 100% 0;
     }
-    @keyframes wiggle {
-      0%, 100% { transform: rotate(0deg); }
-      25% { transform: rotate(3deg); }
-      75% { transform: rotate(-3deg); }
+    @keyframes gradientShift {
+      0% {background-position: 0% 0%;}
+      50% {background-position: 100% 100%;}
+      100% {background-position: 0% 0%;}
     }
 
     .frog-icon {
-      width: 120px;
-      animation: hop 2.5s infinite;
-      margin-top: 20px;
-      user-select: none;
+      width: 140px;
+      margin-top: 25px;
       position: relative;
-      z-index: 10;
+      z-index: 12;
+      filter: drop-shadow(0 0 6px #487703);
+      cursor: pointer;
+      user-select: none;
+      transform-origin: center bottom;
+      animation: frogDance 4s infinite ease-in-out;
     }
-    @keyframes hop {
-      0% { transform: translateY(0); }
-      30% { transform: translateY(-25px) rotate(-6deg); }
-      60% { transform: translateY(10px) rotate(7deg); }
-      100% { transform: translateY(0); }
+    @keyframes frogDance {
+      0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+      25% { transform: translateY(-30px) rotate(15deg) scale(1.15); }
+      50% { transform: translateY(5px) rotate(-15deg) scale(1.05); }
+      75% { transform: translateY(-10px) rotate(8deg) scale(1.1); }
     }
 
     /* Speech bubble */
     .speech-bubble {
       position: absolute;
-      bottom: 160px;
+      bottom: 200px;
       left: 50%;
       transform: translateX(-50%);
-      background: #d9f0b0;
-      border-radius: 15px;
-      padding: 12px 22px;
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #3b5e00;
-      width: 280px;
-      box-shadow: 3px 5px 8px rgba(0,0,0,0.1);
+      background: #c6e389cc;
+      border-radius: 25px;
+      padding: 15px 28px;
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: #395e01;
+      width: 320px;
+      box-shadow: 0 4px 8px rgba(68, 95, 10, 0.45);
       user-select: none;
-      z-index: 11;
+      z-index: 20;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.5s ease;
+      transition: opacity 0.6s ease;
+      text-shadow: 0 0 5px #8bb35a;
+      font-family: 'Comic Neue', cursive;
     }
     .speech-bubble::after {
       content: "";
       position: absolute;
-      bottom: -20px;
+      bottom: -25px;
       left: 50%;
       transform: translateX(-50%);
-      border-width: 12px;
+      border-width: 15px;
       border-style: solid;
-      border-color: #d9f0b0 transparent transparent transparent;
+      border-color: #c6e389cc transparent transparent transparent;
     }
     .speech-bubble.show {
       opacity: 1;
@@ -203,20 +249,26 @@
 </head>
 <body>
 
+  <div class="ripple-container" aria-hidden="true">
+    <div class="ripple"></div>
+    <div class="ripple"></div>
+    <div class="ripple"></div>
+  </div>
+
   <header>
     <h1>$LILPEPE 🐸</h1>
     <p class="desc">He’s small. He’s smug. He’s got a PhD in memeconomics and a rocket strapped to his back. 🚀</p>
   </header>
 
-  <div class="welcome-banner" id="welcomeBanner">🐸 Welcome to the swamp of $LILPEPE! Ribbit! 🐸</div>
+  <div class="welcome-banner" id="welcomeBanner" aria-live="polite" role="alert">🐸 Welcome to the swamp of $LILPEPE! Ribbit! 🐸</div>
 
   <div class="desc">
     Meet <strong>$LILPEPE</strong>, the tiniest frog with the biggest meme energy on Solana. Born in the swamps of Web3 and raised on pure chaos, LIL PEPE is here to climb the charts, steal your bags, and vibe with the degens. He’s got a roadmap? Nah. He’s got vibes.
   </div>
 
-  <img src="https://em-content.zobj.net/source/twitter/376/frog_1f438.png" alt="dancing frog" class="frog-icon" id="frogIcon">
+  <img src="https://em-content.zobj.net/source/twitter/376/frog_1f438.png" alt="dancing frog" class="frog-icon" id="frogIcon" tabindex="0" aria-label="Dancing frog">
 
-  <div class="speech-bubble" id="speechBubble"></div>
+  <div class="speech-bubble" id="speechBubble" role="region" aria-live="polite" aria-atomic="true"></div>
 
   <div class="features">
     <h2>🔥 Why $LILPEPE?</h2>
@@ -233,7 +285,9 @@
     <p>Legend says LIL PEPE once tried to stake $DOGE and accidentally created his own chain of memes so powerful they broke Twitter. Now he's chillin' on Solana, waiting for Elon to tweet him into the stratosphere. 🌌🐸</p>
   </div>
 
-  <button class="buy-button" id="buyButton">🐸 Buy $LILPEPE Now (Before Your Frens Do)</button>
+  <button class="buy-button" id="buyButton" aria-label="Buy LILPEPE token">
+    🐸 Buy $LILPEPE Now (Before Your Frens Do)
+  </button>
 
   <div class="footer">
     <p>Follow us on <a href="https://twitter.com/tickerislilpepe" target="_blank" rel="noopener noreferrer">Twitter</a> | Launch at <a href="https://pump.fun" target="_blank" rel="noopener noreferrer">Pump.fun</a></p>
@@ -244,14 +298,13 @@
   <audio id="clickSound" src="https://actions.google.com/sounds/v1/animals/frog_croak.ogg" preload="auto"></audio>
 
   <script>
-    // Play ribbit on page load with welcome banner fade out
+    // Play ribbit on page load + fade out welcome banner
     window.addEventListener('load', () => {
       const ribbit = document.getElementById('ribbitSound');
       const banner = document.getElementById('welcomeBanner');
 
-      ribbit.play().catch(() => {
-        // Autoplay might be blocked, no worries
-      });
+      // Attempt to play ribbit sound, may get blocked until user interacts
+      ribbit.play().catch(() => {});
 
       setTimeout(() => {
         banner.style.opacity = '0';
@@ -259,17 +312,40 @@
       }, 5000);
     });
 
-    // Play frog croak on buy button click
+    // Sounds elements
     const buyButton = document.getElementById('buyButton');
     const clickSound = document.getElementById('clickSound');
+    const ribbitSound = document.getElementById('ribbitSound');
 
-    buyButton.addEventListener('click', () => {
+    // To unlock audio context on first user interaction
+    function unlockAudio() {
+      if (ribbitSound.paused) {
+        ribbitSound.play().then(() => {
+          ribbitSound.pause();
+          ribbitSound.currentTime = 0;
+        }).catch(() => {});
+      }
+      if (clickSound.paused) {
+        clickSound.play().then(() => {
+          clickSound.pause();
+          clickSound.currentTime = 0;
+        }).catch(() => {});
+      }
+      window.removeEventListener('pointerdown', unlockAudio);
+    }
+    window.addEventListener('pointerdown', unlockAudio);
+
+    // Play frog croak on button pointerdown with better user gesture handling
+    buyButton.addEventListener('pointerdown', () => {
       clickSound.currentTime = 0;
       clickSound.play().catch(() => {});
-      // Open link after small delay to let sound play
+    });
+
+    buyButton.addEventListener('click', () => {
+      // Delay opening link slightly so sound plays
       setTimeout(() => {
         window.open('https://pump.fun/', '_blank');
-      }, 300);
+      }, 250);
     });
 
     // Speech bubble messages cycling
@@ -296,18 +372,19 @@
       }, 4000);
     }
 
-    // Show speech bubble every 5 seconds, with 1s hidden gap
     showSpeech();
-    setInterval(showSpeech, 5000);
+    setInterval(showSpeech, 5500);
 
-    // Optional: Frog icon wiggle on speech
+    // Extra: Frog dances on speech bubble show (scale & rotate)
     const frogIcon = document.getElementById('frogIcon');
     setInterval(() => {
-      frogIcon.style.transform = 'translateY(-10px) rotate(10deg)';
+      frogIcon.style.transform = 'translateY(-20px) rotate(15deg) scale(1.15)';
       setTimeout(() => {
         frogIcon.style.transform = '';
-      }, 800);
-    }, 5000);
+      }, 900);
+    }, 5500);
+
   </script>
 </body>
 </html>
+
