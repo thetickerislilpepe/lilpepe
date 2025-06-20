@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>$LILPEPE – MemeCoin</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', sans-serif;
+      background: linear-gradient(to bottom right, #fffcda, #ffe4b5);
+      color: #333;
+      text-align: center;
+      padding: 20px;
+    }
+    header {
+      background-color: #fdd835;
+      padding: 30px 20px;
+      border-bottom: 5px dashed #333;
+    }
+    h1 {
+      font-size: 3rem;
+      color: #2e7d32;
+    }
+    .desc {
+      font-size: 1.25rem;
+      margin: 20px auto;
+      max-width: 700px;
+    }
+    .features {
+      margin-top: 30px;
+    }
+    .features ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    .features li {
+      font-size: 1.1rem;
+      margin: 10px 0;
+    }
+    .lore {
+      margin-top: 40px;
+      font-style: italic;
+      font-size: 1rem;
+    }
+    .footer {
+      margin-top: 50px;
+      font-size: 0.9rem;
+    }
+    a {
+      color: #1565c0;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>$LILPEPE 🐸</h1>
+    <p class="desc">He’s small. He’s smug. He’s headed to the moon.</p>
+  </header>
+
+  <div class="desc">
+    Meet <strong>$LILPEPE</strong>, the tiniest frog with the biggest meme energy on Solana. Born in the swamps of Web3 and raised on pure chaos, LIL PEPE is here to climb the charts, steal your bags, and vibe with the degens.
+  </div>
+
+  <div class="features">
+    <h2>🔥 Why $LILPEPE?</h2>
+    <ul>
+      <li>✅ Fair Launch on Pump.fun</li>
+      <li>✅ No Dev Tax, No Presale Nonsense</li>
+      <li>✅ Powered by Pepe Energy & Internet Tears</li>
+      <li>✅ Community-Driven, 100% Pure Meme Fuel</li>
+      <li>✅ Gonna be bigger than his uncle $PEPE 😤</li>
+    </ul>
+  </div>
+
+  <div class="lore">
+    <p>Legend says LIL PEPE once tried to stake $DOGE and accidentally created his own chain of memes so powerful they broke Twitter. Now he's on Solana, looking for redemption—and liquidity.</p>
+  </div>
+
+  <div class="footer">
+    <p>Follow us on <a href="https://twitter.com/lilpepecoin" target="_blank">Twitter</a> | Launch at <a href="https://pump.fun" target="_blank">Pump.fun</a></p>
+  </div>
+</body>
+</html>
+
